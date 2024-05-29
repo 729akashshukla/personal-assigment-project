@@ -1,0 +1,49 @@
+body{
+    background: rgb(40, 107, 253);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#form{
+    width:300px;
+    margin: 20vh auto 0 auto;
+    padding:20px ;
+    background-color: whitesmoke;
+    border-radius: 4px;
+    font-size: 12px;
+
+}
+#form button{
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%;
+    color: rgb(255, 242, 242);
+    background-color: rgb(76, 181, 162);
+    border: none;
+    border-radius: 4px;
+}
+
+.input-control{
+    display: flex;
+    flex-direction: column;
+}
+.input-control input{
+    border: 2px solid rgb(8, 17, 36);
+    border-radius: 4px;
+    display: block;
+    font-size: 12px;
+    padding: 10px;
+}
+
+.input-control input:focus{
+    outline: 0;
+}
+.input-control.success input{
+    border-color: rgba(26, 43, 26, 0.648);
+}
+
+.input-control.error input{
+    border-color: rgb(251, 0, 46);
+}
+.mygclass{
+    display: inline-block;
+}
