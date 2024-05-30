@@ -85,11 +85,13 @@ if( unameValue ===''){
     if(ageValue ===''){
         setError(age,'age cannot be empty');
     
-    }else if(age<=100 && age>18)
+    }else if(ageValue>18 && ageValue<100)
     {
         setSuccess(age);
     
-    }
+    }else(
+        setError(age,'age cannot less than 18 and greater than 100')
+    )
 
     if(term_and_condition.checked){
         setSuccess(term_and_condition);
