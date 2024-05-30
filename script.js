@@ -1,17 +1,18 @@
 const form=document.getElementById('form');
-const name =docoment.getElementById('uname');
-const email =docoment.getElementById('email');
-const gender =docoment.getElementById('gender');
-const password =docoment.getElementById('password');
-const password2 =docoment.getElementById('password2');
-
-const age =docoment.getElementByI('age');
+const uname =document.getElementById('uname');
+const email =document.getElementById('email');
+const gender =document.getElementById('mygclass');
+const password =document.getElementById('password');
+const password2 =document.getElementById('password2');
+const age =document.getElementById('age');
 const term_and_condition=document.getElementById('tandc')
 
 form.addEventListener('submit',e=>{
-e.preventDefault();
 
-validateInputs();
+ e.preventDefault();
+
+  validateInputs();
+
 
 });
 
@@ -21,9 +22,9 @@ const inputControl =element.parentElement;
 const errorDisplay =inputControl.querySelector('.error');
 
 
-errorDisplay.innerText =message;
+errorDisplay.innerText =message ;
 inputControl.classList.add('error');
-inputControl.classList.remove('sucess')
+inputControl.classList.remove('sucess');
 
 
 }
@@ -36,57 +37,66 @@ inputControl.classList.remove('error')
 }
 
 
-const isValidEmail = email=>{
-const re=/(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
-return re.test(String(email).toLowerCase());
+const isValidEmail = email => {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
 }
 
 
 const validateInputs =()=>{
-const nameValue =uname.value.trim();
-const emailValue =email.value.trim();
-const passwordValue =password.value.trim();
-const password2Value =password2.value.trim();
-const ageValue =age.value.trim();
-}
 
-if(nameValue === ''){
-setError(uname ,'name is required');
-}else{
+const unameValue =uname.value.trim();
+const emailValue = email.value.trim();
+const passwordValue = password.value.trim();
+const password2Value = password2.value.trim();
+const ageValue =age.value;
 
-setSucess(uname);
+if( unameValue ===''){
+    setError(uname ,'name is required');
+    }else{
+    
+    setSuccess(uname);
+    }
 
-}
+    if(emailValue === '') {
+        setError(email, 'Email is required');
+    } else if (!isValidEmail(emailValue)) {
+        setError(email, 'Provide a valid email address');
+    } else {
+        setSuccess(email);
+    }
 
-if(emailValue=== ''){
-setError(uname ,'Email is required');
-}else{
+    if(passwordValue === '') {
+        setError(password, 'Password is required');
+    } else if (passwordValue.length < 8 ) {
+        setError(password, 'Password must be at least 8 character.')
+    } else {
+        setSuccess(password);
+    }
 
-setSucess(email);
+    if(password2Value === '') {
+        setError(password2, 'Please confirm your password');
+    } else if (password2Value !== passwordValue) {
+        setError(password2, "Passwords doesn't match");
+    } else {
+        setSuccess(password2);
+    }
 
+    if(ageValue ===''){
+        setError(age,'age cannot be empty');
+    
+    }else if(age<=100 && age>18)
+    {
+        setSuccess(age);
+    
+    }
 
-}
-if(passwordValue ===''){
-setError(uname ,'password  is required');
-}else if(passwordValue.length<8){
-setError(password,'password must be at leart 8 character');
+    if(term_and_condition.checked){
+        setSuccess(term_and_condition);
 
-}else{
-setSuccess(password);
-}
+    }else{
+        setError(term_and_condition,"please raed the terms and conditiom")
+    }
+ 
 
-if(password2Value === ''){
-setError(password2,'please confirm your password');
-}else if(password2Value!==password){
-setError(password2,"password doesn't match");
-}else{
-setSuccess(password2);
-}
-
-if(age===''){
-    setError(age,'age cannot be empty');
-
-}else if(age<=100 && age>18)
-{
-    setSuccess(age);
-}
+};

@@ -27,23 +27,30 @@ body{
     flex-direction: column;
 }
 .input-control input{
-    border: 2px solid rgb(8, 17, 36);
+    border: 2px solid rgb(20, 2, 2);
     border-radius: 4px;
     display: block;
     font-size: 12px;
     padding: 10px;
+    width: 90%;
 }
 
 .input-control input:focus{
     outline: 0;
 }
 .input-control.success input{
-    border-color: rgba(26, 43, 26, 0.648);
+    border-color: rgba(2, 247, 2, 0.648);
 }
 
 .input-control.error input{
-    border-color: rgb(251, 0, 46);
+    border-color: rgb(219, 4, 44);
 }
+.input-control .error{
+    color: #ff2450;
+    font-size: 9px;
+    height: 13px;
+}
+
 .mygclass{
     display: inline-block;
 }
